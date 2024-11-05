@@ -1,0 +1,47 @@
+basePath: /
+definitions:
+  models.LoadTestRequest:
+    properties:
+      delay:
+        type: integer
+      num_requests:
+        type: integer
+      url:
+        type: string
+    required:
+    - num_requests
+    - url
+    type: object
+info:
+  contact: {}
+  description: Delivery service
+  title: Voting service
+  version: "1.0"
+paths:
+  /attack:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint initiates a load test based on the given parameters.
+      parameters:
+      - description: Load test parameters
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/models.LoadTestRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Invalid request
+          schema:
+            type: string
+      summary: Attack endpoint to initiate load test
+      tags:
+      - LoadTest
+swagger: "2.0"

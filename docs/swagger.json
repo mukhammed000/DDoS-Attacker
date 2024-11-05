@@ -1,0 +1,72 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Delivery service",
+        "title": "Voting service",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/attack": {
+            "post": {
+                "description": "This endpoint initiates a load test based on the given parameters.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "LoadTest"
+                ],
+                "summary": "Attack endpoint to initiate load test",
+                "parameters": [
+                    {
+                        "description": "Load test parameters",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.LoadTestRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.LoadTestRequest": {
+            "type": "object",
+            "required": [
+                "num_requests",
+                "url"
+            ],
+            "properties": {
+                "delay": {
+                    "type": "integer"
+                },
+                "num_requests": {
+                    "type": "integer"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

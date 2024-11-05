@@ -19,7 +19,7 @@ func Load() Config {
 	
 	config := Config{}
 
-	config.HTTP_PORT = cast.ToString(getOrReturnDefaultValue("HTTP_PORT", ":8081"))
+	config.HTTP_PORT = cast.ToString(getOrReturnDefaultValue("HTTP_PORT", ":8080"))
 
 	return config
 }
